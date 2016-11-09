@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="dialogModel"
+            type="proj.me.wardrobe.dialogs.model.DialogModel"/>
+        <variable
+            name="clickHandler"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@{dialogModel.backgroundColor}"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/d_10"
+            android:paddingTop="@dimen/d_10"
+            android:paddingLeft="@dimen/d_5"
+            android:paddingRight="@dimen/d_5"
+            android:singleLine="true"
+            android:text="@{dialogModel.text}"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/forgot"
+            android:onClick="@{clickHandler::onClick}"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+</layout>

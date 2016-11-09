@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Wardrobe</string>
+    <string name="top_left_frag">tops</string>
+    <string name="bottom_right_frag">bottoms</string>
+    <string name="add_cloths">ADD</string>
+    <string name="shirt_or_top">Shirt/Top</string>
+    <string name="pant_or_bottom">Pant/Bottom</string>
+
+    <string name="top_left">top_left</string>
+    <string name="bottom_right">bottom_right</string>
+    <string name="shuffle">shuffle</string>
+    <string name="favorite">favorite</string>
+
+</resources>

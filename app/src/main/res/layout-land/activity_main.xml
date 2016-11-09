@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="clickHandler"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="container"
+            type="proj.me.wardrobe.ContainerModel" />
+    </data>
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light"
+        tools:context="proj.me.wardrobe.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="@dimen/d_16"
+            android:layout_marginBottom="@dimen/d_16"
+            android:layout_toRightOf="@+id/add_more_image"
+            android:layout_toLeftOf="@+id/add_more_image_right">
+
+            <fragment
+                android:name="proj.me.wardrobe.frag.SlidingFragment"
+                android:layout_width="@dimen/d_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/d_50"
+                android:tag="@string/top_left_frag"
+                tools:layout="@layout/slider_frag" />
+
+            <fragment
+                android:name="proj.me.wardrobe.frag.SlidingFragment"
+                android:layout_width="@dimen/d_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:tag="@string/bottom_right_frag"
+                android:layout_marginLeft="@dimen/d_50"
+                tools:layout="@layout/slider_frag" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/cloth_marker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/d_10"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/d_50"
+                android:layout_height="@dimen/d_30"
+                android:background="@{container.topBackgroundColor, default = @color/colorPrimary}"
+                android:src="@drawable/match_color_left"
+                />
+
+            <ImageView
+                android:layout_width="@dimen/d_50"
+                android:layout_height="@dimen/d_30"
+                android:background="@{container.bottomBackgroundColor, default = @color/colorAccent}"
+                android:rotation="180"
+                android:src="@drawable/match_color_left" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/shuffle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shuffle_bg"
+            android:padding="@dimen/d_5"
+            android:src="@drawable/ic_shuffle"
+            android:onClick="@{clickHandler::onClick}"
+            android:tag="@string/shuffle"/>
+
+        <ImageView
+            android:id="@+id/heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/d_14"
+            android:padding="@dimen/d_5"
+            android:src="@{container.favorite ? @drawable/fill_heart : @drawable/empty_heart, default = @drawable/empty_heart}"
+            android:onClick="@{clickHandler::onClick}"
+            android:tag="@string/favorite"/>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_more_image_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/d_14"
+            android:layout_marginTop="@dimen/d_14"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@color/colorAccent"
+            app:fabSize="mini"
+            android:onClick="@{clickHandler::onClick}"
+            android:tag="@string/bottom_right"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_more_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/d_14"
+            android:layout_marginTop="@dimen/d_14"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@color/colorPrimary"
+            app:fabSize="mini"
+            android:onClick="@{clickHandler::onClick}"
+            android:tag="@string/top_left"/>
+    </RelativeLayout>
+</layout>
